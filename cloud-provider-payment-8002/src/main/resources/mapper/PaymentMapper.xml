@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.cloud.provider.payment.mapper.PaymentMapper">
+  <resultMap id="BaseResultMap" type="com.yq.cloud.provider.payment.domain.Payment">
+    <!--@mbg.generated-->
+    <!--@Table payment-->
+    <id column="pay_id" jdbcType="BIGINT" property="payId" />
+    <result column="pay_serial" jdbcType="VARCHAR" property="paySerial" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    pay_id, pay_serial
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from payment
+    where pay_id = #{payId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from payment
+    where pay_id = #{payId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="pay_id" keyProperty="payId" parameterType="com.yq.cloud.provider.payment.domain.Payment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into payment (pay_serial)
+    values (#{paySerial,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="pay_id" keyProperty="payId" parameterType="com.yq.cloud.provider.payment.domain.Payment" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into payment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="paySerial != null">
+        pay_serial,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="paySerial != null">
+        #{paySerial,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yq.cloud.provider.payment.domain.Payment">
+    <!--@mbg.generated-->
+    update payment
+    <set>
+      <if test="paySerial != null">
+        pay_serial = #{paySerial,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_id = #{payId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yq.cloud.provider.payment.domain.Payment">
+    <!--@mbg.generated-->
+    update payment
+    set pay_serial = #{paySerial,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=BIGINT}
+  </update>
+</mapper>

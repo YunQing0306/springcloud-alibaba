@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: cloud-provider-payment
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.239.128:8848
+        file-extension: yaml

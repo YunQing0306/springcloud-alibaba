@@ -1,0 +1,27 @@
+#服务端口
+server:
+  port: 8081
+
+#服务名
+spring:
+  application:
+    name: cloud-customer-order
+
+#nacos-注册中心
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.239.128:8848
+
+#健康检测
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+#OpenFeign-服务通信框架OpenFeign
+feign:
+
+  sentinel:
+    enabled: true
